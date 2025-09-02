@@ -1,0 +1,9 @@
+# Core dependencies
+groq
+langchain
+langchain-core
+python-dotenv
+
+# Optional providers / tools (uncomment if needed)
+# ollama    # local models (requires Ollama app installed separately)
+# openai    # OpenAI SDK (if you plan to use OpenAI models)
