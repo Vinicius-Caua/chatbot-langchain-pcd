@@ -37,6 +37,16 @@ prompt = ChatPromptTemplate.from_messages([
 # Cria a chain (cadeia) combinando prompt + modelo
 chain = prompt | model
 
+# Prompt e chain para gerar resumo
+prompt_summary = ChatPromptTemplate.from_messages([
+    ("system", "You are a concise summarizer. \
+    Produce a short summary of the conversation below, listing each user's question and the assistant's reply. \
+    Keep it compact and use bullets or numbered lines. Match the user's language."),
+    MessagesPlaceholder(variable_name="chat_history"),
+    ("human", "{instruction}")
+])
+summary_chain = prompt_summary | model
+
 # Lista para guardar a conversa
 conversa = []
 
@@ -68,8 +78,19 @@ for pergunta_num in range(1, 4):
     # Mostra a resposta
     print(f"♿ PCD Bot: {response.content}\n")
 
-    # Se foi a 3ª pergunta, avisa que acabou
+    # Se foi a 3ª pergunta, avisa que acabou e gera resumo
     if pergunta_num == 3:
         print("=== FIM DO CHAT (3 perguntas respondidas) ===")
+
+        # Gera resumo usando a conversa completa
+        summary = summary_chain.invoke({
+            "instruction": "Summarize the conversation: list each user question and assistant response in bullets, keep it short (max 200 words). \
+                Remember, there are only 3 QUESTIONS AND 3 ANSWERS (Limits on 3 and 3).",
+            "chat_history": conversa
+        })
+
+        print("\n=== RESUMO DA CONVERSA ===")
+        print(summary.content)
+        print("=========================\n")
 
 print("Programa finalizado! ♿")
