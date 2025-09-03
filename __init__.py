@@ -2,7 +2,6 @@ from langchain.chat_models import init_chat_model
 from langchain_core.messages import HumanMessage, AIMessage
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from dotenv import load_dotenv
-import os
 
 # Carrega as variáveis do arquivo .env
 load_dotenv()

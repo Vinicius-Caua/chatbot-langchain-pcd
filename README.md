@@ -1,6 +1,9 @@
 # Chatbot PCD ♿
 
-Breve projeto de chatbot com tema PCD (acessibilidade). Usa LangChain core + provedor Groq por padrão; tem prompt sistemático, histórico de mensagens e resumo final após 3 perguntas.
+Breve projeto de chatbot com tema PCD (acessibilidade). Usa LangChain core + provedor Groq por padrão; tem prompt sistemático, histórico de mensagens e resumo final após 3 perguntas. \
+>[!IMPORTANTE]
+>
+>Veja o Vídeo Explicação no YouTube [Aqui](https://youtu.be/vdKwLAG55jM).
 
 ## Conteúdo do repositório
 
